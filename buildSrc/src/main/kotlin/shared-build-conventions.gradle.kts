@@ -16,12 +16,12 @@ tasks.named<Test>("test") {
 }
 
 tasks.register("testWithDoneMsg"){
-    group = "verification"
+    group = "verification" // gradle tasks group 설정
     description = "echo 'done' message after test has been done"
-    dependsOn("test")
+    dependsOn("test") // "test" task 수행 후에 이 task를 실행
 
     doLast {
-        println("custom msg: done")
+        println("custom msg: done") // task 마지막에 실행
     }
 }
 
