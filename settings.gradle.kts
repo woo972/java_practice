@@ -1,4 +1,4 @@
 rootProject.name = "practice-project"
-include("jackson-prac")
-include("java-prac")
-include("designpattern-prac")
+include("prac-jackson")
+include("prac-java")
+include("prac-design-pattern")
