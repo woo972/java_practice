@@ -1,4 +1,3 @@
-rootProject.name = "practice-project"
-include("prac-jackson")
-include("prac-java")
-include("prac-design-pattern")
+rootProject.name = "instrument_project"
+include("instrument")
+include("application")

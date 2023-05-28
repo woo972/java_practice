@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Agent-Class: com.inst.Main
+Can-Redefine-Classes: true
+Can-Retransform-Classes: true
+Premain-Class: com.inst.Main
+
