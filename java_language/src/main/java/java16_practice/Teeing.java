@@ -12,6 +12,5 @@ public class Teeing {
                         Collectors.summingInt(n -> n),
                         Collectors.counting(),
                         (sum, count) -> (int) (sum / count)));
-
     }
 }
