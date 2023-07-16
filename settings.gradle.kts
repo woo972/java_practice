@@ -1,4 +1,5 @@
-rootProject.name = "instrument_project"
+rootProject.name = "application_practice"
 include("instrument")
-include("application")
 include("java_language")
+include("design_pattern")
+include("algorithm_datastructure")
