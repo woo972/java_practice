@@ -1,0 +1,62 @@
+{
+  "bannerLayout": "WIDE_CAROUSEL",
+  "banners": [
+    {
+      "image": {
+        "imagePath": "/cdn/image/banner/top/1",
+        "landingPageLink": "/link/page1"
+      },
+      "mainDescription": {
+        "text": "banner1",
+        "bold": true,
+        "size": "LARGE"
+      },
+      "adultOnly": false,
+      "subDescription": {
+        "text": "sub1",
+        "bold": false,
+        "size": "SMALL"
+      },
+      "wideBanner": true,
+      "carouselBanner": true
+    },
+    {
+      "image": {
+        "imagePath": "/cdn/image/banner/top/2",
+        "landingPageLink": "/link/page2"
+      },
+      "mainDescription": {
+        "text": "banner2",
+        "bold": true,
+        "size": "LARGE"
+      },
+      "adultOnly": false,
+      "subDescription": {
+        "text": "sub2",
+        "bold": false,
+        "size": "SMALL"
+      },
+      "wideBanner": true,
+      "carouselBanner": true
+    },
+    {
+      "image": {
+        "imagePath": "/cdn/image/banner/top/3",
+        "landingPageLink": "/link/page3"
+      },
+      "mainDescription": {
+        "text": "banner3",
+        "bold": true,
+        "size": "LARGE"
+      },
+      "adultOnly": false,
+      "subDescription": {
+        "text": "sub3",
+        "bold": false,
+        "size": "SMALL"
+      },
+      "wideBanner": true,
+      "carouselBanner": true
+    }
+  ]
+}
