@@ -4,6 +4,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import sort.MergeSort;
 
 public class MergeSortTest {
 
@@ -30,7 +31,7 @@ public class MergeSortTest {
 	
 	@Test
 	void test_mergeSort() {
-		Assertions.assertEquals(expectedList, main.MergeSort.sort(inputList));
+		Assertions.assertEquals(expectedList, MergeSort.sort(inputList));
 	}
 	
 }

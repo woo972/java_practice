@@ -4,6 +4,7 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import sort.QuickSort;
 
 public class QuickSortTest {
 	
@@ -31,7 +32,7 @@ public class QuickSortTest {
 	
 	@Test
 	void test_quicksort() {
-		Assertions.assertEquals(expectedList, main.QuickSort.sort(inputList));
+		Assertions.assertEquals(expectedList, QuickSort.sort(inputList));
 	}
 
 }
