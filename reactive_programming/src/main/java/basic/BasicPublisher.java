@@ -1,11 +1,9 @@
 package basic;
 
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.util.Iterator;
 import java.util.stream.Stream;
+import java.util.concurrent.Flow.*;
 
 public class BasicPublisher implements Publisher<Integer> {
     Iterator<Integer> iterator = Stream

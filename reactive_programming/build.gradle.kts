@@ -11,7 +11,6 @@ repositories {
 }
 
 dependencies {
-    implementation("org.reactivestreams:reactive-streams:1.0.4")
     implementation("io.projectreactor:reactor-core:3.5.5")
     implementation("io.projectreactor:reactor-test:3.5.5")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")

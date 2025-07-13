@@ -1,7 +1,6 @@
 package basic;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
+import java.util.concurrent.Flow.*;
 
 public class BasicSubscriber implements Subscriber<Integer> {
     // onSubscribe를 통해 subscription의 request를 수행한다.

@@ -2,8 +2,7 @@ import basic.BasicErrorPublisher;
 import basic.BasicPublisher;
 import basic.BasicSubscriber;
 import org.junit.jupiter.api.Test;
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
+import java.util.concurrent.Flow.*;
 
 public class BasicImplementationTest {
 
