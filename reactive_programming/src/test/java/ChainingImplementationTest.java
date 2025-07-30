@@ -1,6 +1,4 @@
-import chaining.LogSubscriber;
-import chaining.MapPublisher;
-import chaining.RootPublisher;
+import chaining.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.Flow.*;
@@ -14,5 +12,13 @@ public class ChainingImplementationTest {
         Publisher<Integer> mapPublisher = new MapPublisher(rootPublisher);
         Subscriber<Integer> subscriber = new LogSubscriber();
         mapPublisher.subscribe(subscriber);
+    }
+
+    @Test
+    public void test_cancel_case() {
+        Publisher<Integer> rootPublisher = new RootPublisher();
+        Publisher<Integer> cancelPublisher = new CancelPublisher(rootPublisher);
+        Subscriber<Integer> subscriber = new LogSubscriber();
+        cancelPublisher.subscribe(subscriber);
     }
 }

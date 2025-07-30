@@ -1,16 +1,11 @@
 package basic;
 
-import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
+import java.util.concurrent.*;
 
-import java.util.Iterator;
-import java.util.stream.Stream;
-
-public class BasicErrorPublisher implements Publisher<Integer> {
+public class BasicErrorPublisher implements Flow.Publisher<Integer> {
     @Override
-    public void subscribe(Subscriber<? super Integer> s) {
-        s.onSubscribe(new Subscription() {
+    public void subscribe(Flow.Subscriber<? super Integer> s) {
+        s.onSubscribe(new Flow.Subscription() {
             @Override
             public void request(long n) {
                 try{

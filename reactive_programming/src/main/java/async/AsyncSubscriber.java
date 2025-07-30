@@ -25,6 +25,7 @@ public class AsyncSubscriber implements Subscriber<Integer> {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
         executorService.execute(() -> System.out.println(Thread.currentThread().getName() + " : " + integer));
 
     }
@@ -32,10 +33,12 @@ public class AsyncSubscriber implements Subscriber<Integer> {
     @Override
     public void onError(Throwable t) {
         System.out.println(t);
+        executorService.shutdown();
     }
 
     @Override
     public void onComplete() {
         System.out.println("complete");
+        executorService.shutdown();
     }
 }

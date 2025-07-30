@@ -27,7 +27,6 @@ public class AsyncPublisher implements Publisher<Integer> {
             public void request(long n) {
                 long max = n;
                 while(max > 0 && iterator.hasNext()) {
-
                     max--;
                     var x = iterator.next();
                     System.out.println(Thread.currentThread().getName()+" : "+x);
