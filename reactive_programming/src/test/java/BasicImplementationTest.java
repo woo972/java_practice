@@ -1,6 +1,6 @@
-import basic.BasicErrorPublisher;
-import basic.BasicPublisher;
-import basic.BasicSubscriber;
+import flow.basic.BasicErrorPublisher;
+import flow.basic.BasicPublisher;
+import flow.basic.BasicSubscriber;
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.Flow.*;
 

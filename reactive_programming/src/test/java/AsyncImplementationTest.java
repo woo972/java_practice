@@ -1,5 +1,5 @@
-import async.AsyncPublisher;
-import async.AsyncSubscriber;
+import flow.async.AsyncPublisher;
+import flow.async.AsyncSubscriber;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.Flow;

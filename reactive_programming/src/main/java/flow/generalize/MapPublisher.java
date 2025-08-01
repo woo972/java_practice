@@ -1,4 +1,4 @@
-package generalize;
+package flow.generalize;
 
 
 import java.util.concurrent.Flow.Publisher;

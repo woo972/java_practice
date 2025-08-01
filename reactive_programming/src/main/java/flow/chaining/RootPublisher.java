@@ -1,4 +1,4 @@
-package chaining;
+package flow.chaining;
 
 
 import java.util.Iterator;

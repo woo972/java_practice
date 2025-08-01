@@ -1,6 +1,6 @@
-import generalize.LogSubscriber;
-import generalize.MapPublisher;
-import generalize.RootPublisher;
+import flow.generalize.LogSubscriber;
+import flow.generalize.MapPublisher;
+import flow.generalize.RootPublisher;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
