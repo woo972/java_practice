@@ -13,7 +13,7 @@ public class LoadTester {
     }
 
     public void run() throws InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
 
         WebClient webClient = WebClient.builder()
                 .baseUrl("http://localhost:8080")
@@ -23,24 +23,22 @@ public class LoadTester {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             executorService.execute(() -> {
-                log.info("call endpoint");
                 StopWatch subStopWatch = new StopWatch();
                 subStopWatch.start();
                 webClient.get()
-                        .uri("/basic")
+                        .uri("/callable")
                         .retrieve()
                         .bodyToMono(String.class)
-                        .doOnSuccess(response -> log.info("response : {}", response))
-                                ;
+                        .block();
                 subStopWatch.stop();
-                log.info("elapsed time : {}", subStopWatch.getTotalTimeMillis());
+                log.info("sub end : {}", subStopWatch.getTotalTimeMillis());
             });
         }
         stopWatch.stop();
-        executorService.awaitTermination(10000, TimeUnit.MILLISECONDS);
+        executorService.awaitTermination(5000, TimeUnit.MILLISECONDS);
         executorService.shutdown();
-        log.info("ALL END. elapsed time : {}", stopWatch.getTotalTimeMillis());
+        log.info("elapsed time : {}", stopWatch.getTotalTimeMillis());
     }
 }
