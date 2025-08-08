@@ -1,24 +1,30 @@
 package spring;
 
 
+import lombok.extern.slf4j.*;
+import org.springframework.util.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.concurrent.*;
 
 @RestController
+@Slf4j
 public class CallableBasic {
 
-    @GetMapping("/basic")
-    public String basic() {
-        // http-nio-8080-exec-1
-        System.out.println(Thread.currentThread().getName());
+    @GetMapping("/hello")
+    public Callable<String> hello() {
+        log.info(Thread.currentThread().getName());
+        return () -> {
+            service();
+            return Thread.currentThread().getName();
+        };
+    }
+
+    private void service(){
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        // basic: http-nio-8080-exec-1
-        return "basic: " + Thread.currentThread().getName();
-
     }
 
     // callable을 통해 요청 스레드를 block하지 않고 먼저 리턴한 후에 worker thread를 실행

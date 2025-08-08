@@ -2,9 +2,11 @@ package spring;
 
 import lombok.extern.slf4j.*;
 import org.springframework.util.*;
+import org.springframework.web.client.*;
 import org.springframework.web.reactive.function.client.*;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.*;
 
 @Slf4j
 public class LoadTester {
@@ -13,32 +15,31 @@ public class LoadTester {
     }
 
     public void run() throws InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        ExecutorService executorService = Executors.newFixedThreadPool(100);
 
-        WebClient webClient = WebClient.builder()
-                .baseUrl("http://localhost:8080")
-                .build();
+        RestTemplate restTemplate = new RestTemplate();
 
-        log.info("start");
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        for (int i = 0; i < 50; i++) {
+        AtomicInteger count = new AtomicInteger(0);
+        for (int i = 0; i < 100; i++) {
             executorService.execute(() -> {
                 StopWatch subStopWatch = new StopWatch();
                 subStopWatch.start();
-                webClient.get()
-                        .uri("/callable")
-                        .retrieve()
-                        .bodyToMono(String.class)
-                        .block();
+
+                restTemplate.getForObject("http://localhost:8080/hello", String.class);
+
                 subStopWatch.stop();
-                log.info("sub end : {}", subStopWatch.getTotalTimeMillis());
+                log.info("executor count: {}, elapsed time : {}", count.getAndIncrement(), subStopWatch.getTotalTimeMillis());
             });
         }
-        stopWatch.stop();
-        executorService.awaitTermination(5000, TimeUnit.MILLISECONDS);
+
         executorService.shutdown();
+        // shutdown이 실행된 이후, 다른 모든 작업이 끝나길 block 하는 시간
+        executorService.awaitTermination(100, TimeUnit.MINUTES);
+
+        stopWatch.stop();
         log.info("elapsed time : {}", stopWatch.getTotalTimeMillis());
     }
 }
