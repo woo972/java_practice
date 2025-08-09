@@ -9,7 +9,6 @@ import java.util.concurrent.*;
 @RestController
 @Slf4j
 public class CallableBasic {
-
     @GetMapping("/hello")
     public Callable<String> hello() {
         log.info(Thread.currentThread().getName());
