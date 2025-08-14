@@ -2,8 +2,10 @@ package spring;
 
 
 import lombok.extern.slf4j.*;
-import org.springframework.util.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.async.*;
+
+import java.util.*;
 import java.util.concurrent.*;
 
 @RestController
@@ -52,18 +54,35 @@ public class CallableBasic {
     * */
 
 
-    @GetMapping("/callable")
-    public Callable<String> callable() {
-        // http-nio-8080-exec-4
-        System.out.println(Thread.currentThread().getName());
-        return () -> {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            // callable: custom-async-task-1
-            return "callable: " + Thread.currentThread().getName();
-        };
+    @GetMapping("/hello-sync")
+    public String helloSync() {
+        log.info(Thread.currentThread().getName());
+        service();
+        return Thread.currentThread().getName();
+    }
+
+    List<DeferredResult<String>> results = new ArrayList<>();
+
+    @GetMapping("/deferred")
+    public DeferredResult<String> defered() {
+        log.info(Thread.currentThread().getName());
+        DeferredResult<String> result = new DeferredResult<>();
+        results.add(result);
+        return result;
+    }
+
+    @GetMapping("/deferred/size")
+    public int deferredSize() {
+        log.info(Thread.currentThread().getName());
+        return results.size();
+    }
+
+    @GetMapping("/deferred/event")
+    public void deferredEvent(@RequestParam("msg") String msg) {
+        log.info(Thread.currentThread().getName()+" msg:"+msg);
+        results.forEach(dr -> {
+            dr.setResult(msg);
+            results.remove(dr);
+        });
     }
 }
